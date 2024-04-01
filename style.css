@@ -116,7 +116,7 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 160vh;
+    height: 180vh;
     width: 100%;
 }
 
@@ -158,6 +158,23 @@ h3 {
     color: white;
 }
 
+.category-links {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.category-links a {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.category-links a:hover {
+    background-color: #ddd;
+}
+
+/*navigering*/
 .navbar {
     background-color: #000000;
     text-transform: uppercase;

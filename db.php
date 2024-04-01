@@ -19,3 +19,11 @@ try {
     echo "Kunde inte hämta produkter: " . $e->getMessage();
     exit;
 }
+
+try {
+    $stmt = $pdo->query("SELECT id, name FROM categories");
+    $categories = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Kunde inte hämta kategorier: " . $e->getMessage();
+    exit;
+}

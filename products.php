@@ -11,12 +11,12 @@
             <div class="products-container">
                 <?php
                     include "db.php";
-                    $stmt = $pdo->prepare("SELECT * FROM products");
+                    $stmt = $pdo->prepare("SELECT  * FROM products");
                     $stmt->execute();
                     $products = $stmt->fetchAll();
                     foreach ($products as $product) {
                         echo "<div class='product'>";
-                        //echo "<img src='images/{$product['image']}' alt='{$product['name']}'>";
+                        echo "<img src='public/{$product['image_url']}' alt='{$product['name']}'>";
                         echo "<h2>{$product['name']}</h2>";
                         echo "<p>{$product['description']}</p>";
                         echo "<p>{$product['price']} kr</p>";

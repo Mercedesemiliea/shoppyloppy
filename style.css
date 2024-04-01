@@ -127,7 +127,7 @@ h3 {
     margin-top: 10px;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 140vh;
 
 }
 
@@ -140,6 +140,12 @@ h3 {
     text-align: center;
     background-color: #000000;
     color: rgb(239, 239, 244);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
 }
 
 .product h2 {
@@ -193,7 +199,7 @@ h3 {
 
 
 footer {
-    background-color: #d4baba;
+    background-color: #000000;
     color: white;
     text-align: center;
     padding: 10px;

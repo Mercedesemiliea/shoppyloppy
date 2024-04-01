@@ -1,0 +1,204 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+
+
+}
+
+.landingpage-background-container {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-image: url('wallhaven-l8z7rq.jpg');
+    background-size: cover;
+    background-position: center 45px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+
+}
+
+.hero {
+    position: absolute;
+    left: 3%;
+    top: -5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: start;
+    height: 480px;
+    width: 500px;
+    margin-left: 5%;
+    border-radius: 1rem;
+
+}
+
+
+
+.landingpage-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #000000;
+    margin-top: -15px;
+
+}
+
+.landingpage-background-content {
+    height: 110vh;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    font-size: 1.3rem;
+    color: white;
+    margin-left: 10%;
+    margin-top: 4%;
+}
+
+.products-popular-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 160vh;
+    width: 40%;
+    color: white;
+    position: absolute;
+    right: 13%;
+}
+
+.popular-product {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -20%;
+    justify-content: center;
+    width: 80%;
+    height: 40vh;
+    cursor: pointer;
+
+}
+
+h4 {
+    color: rgb(108, 67, 67);
+    text-transform: uppercase;
+    font-size: 2rem;
+
+}
+
+h3 {
+    color: rgb(108, 67, 67);
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+
+.popular-products:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+/* produkterna från sql */
+
+.products-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 160vh;
+    width: 100%;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.product {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    cursor: pointer;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    background-color: #000000;
+    color: rgb(239, 239, 244);
+}
+
+.product h2 {
+    color: hotpink;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+.product-container p {
+    color: white;
+}
+
+.navbar {
+    background-color: #000000;
+    text-transform: uppercase;
+    padding: 1%;
+    height: 80px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    position: fixed;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+
+.navbar li a {
+    display: block;
+    color: #FCF6EA;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #FCF6EA;
+    color: black;
+}
+
+
+
+
+footer {
+    background-color: #d4baba;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;
+
+}

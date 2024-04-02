@@ -10,43 +10,56 @@
     <div class="products-background">
         <div class="category-links">
             <?php
-            include "db.php"; 
+            include "db.php";
             $stmt = $pdo->prepare("SELECT id, name FROM categories");
             $stmt->execute();
             $categories = $stmt->fetchAll();
+            $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
+            $search = isset($_GET['search']) ? $_GET['search'] : null;
+            $dir = isset($_GET['dir']) && $_GET['dir'] === 'desc' ? 'desc' : 'asc';
             foreach ($categories as $category): ?>
-                <a href="products.php?category_id=<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></a>
+                <a href="products.php?category_id=<?php echo $category['id']; ?><?php echo $search ? '&search=' . $search : ''; ?><?php echo '&dir=' . $dir; ?>"><?php echo htmlspecialchars($category['name']); ?></a>
             <?php endforeach; ?>
+
+            <!-- Sorteringsform -->
+            <form action="products.php" method="get">
+                Sortera efter pris:
+                <select name="dir" onchange="this.form.submit()">
+                    <option value="asc" <?php echo $dir == 'asc' ? 'selected' : ''; ?>>Lågt till Högt</option>
+                    <option value="desc" <?php echo $dir == 'desc' ? 'selected' : ''; ?>>Högt till Lågt</option>
+                </select>
+                <?php if ($category_id): ?>
+                    <input type="hidden" name="category_id" value="<?php echo htmlspecialchars($category_id); ?>">
+                <?php endif; ?>
+                <?php if ($search): ?>
+                    <input type="hidden" name="search" value="<?php echo htmlspecialchars($search); ?>">
+                <?php endif; ?>
+            </form>
         </div>
+        
         <div class="products-container">
             <?php
-            $search = isset($_GET['search']) ? $_GET['search'] : null;
-            $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
-            
-            // Grundläggande fråga som alltid kommer att köras
-            $query = "SELECT products.* FROM products 
-                      LEFT JOIN categories ON products.category_id = categories.id";
             $whereConditions = [];
             $params = [];
             
-            // Kontrollerar om en kategori är vald
             if ($category_id) {
                 $whereConditions[] = "products.category_id = ?";
                 $params[] = $category_id;
             }
 
-            // Lägger till söklogik för både produktnamn och kategorinamn
+            
             if ($search) {
                 $whereConditions[] = "(products.name LIKE ? OR categories.name LIKE ?)";
                 $params[] = '%' . $search . '%';
                 $params[] = '%' . $search . '%';
             }
+
+            $whereSQL = !empty($whereConditions) ? " WHERE " . implode(" AND ", $whereConditions) : "";
             
-            // Om det finns villkor, lägg till dem till frågan
-            if (!empty($whereConditions)) {
-                $query .= " WHERE " . implode(" AND ", $whereConditions);
-            }
-            
+            $query = "SELECT products.* FROM products 
+                      LEFT JOIN categories ON products.category_id = categories.id"
+                      . $whereSQL 
+                      . " ORDER BY products.price $dir";
             $stmt = $pdo->prepare($query);
             $stmt->execute($params);
             $products = $stmt->fetchAll();

@@ -91,14 +91,14 @@
 }
 
 h4 {
-    color: rgb(108, 67, 67);
+    color: hotpink;
     text-transform: uppercase;
     font-size: 2rem;
 
 }
 
 h3 {
-    color: rgb(108, 67, 67);
+    color: hotpink;
     text-transform: uppercase;
     margin: 10px 0;
 }
@@ -184,6 +184,9 @@ h3 {
     overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
     font-size: 2rem;
     position: fixed;
 }
@@ -213,6 +216,33 @@ h3 {
 }
 
 
+/* navbar sök */
+
+.navbar form {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 5%;
+    top: 30%;
+}
+
+.navbar input[type="text"] {
+    padding: 5px;
+    width: 90%;
+    margin-right: 5px;
+}
+
+.navbar button {
+    padding: 5px;
+    background: hotpink;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar button:hover {
+    background: #b2c0cf;
+}
 
 
 footer {

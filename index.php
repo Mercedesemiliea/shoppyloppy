@@ -4,12 +4,18 @@
         <meta charset="UTF-8">
         <title>Evolve Emporium</title>
         <link rel="stylesheet" href="style.css">
+        <iconify-icon icon="simple-icons:pokemon" width="3rem" height="3rem"></iconify-icon>
+</head>
+
     </head>
     <body>
         <?php include "navbar.php"; ?>
             <div class="landingpage-background-container">
                 <section class="hero">
                     <h1>Välkommen till Evolve Emporium</h1>
+                    <div class="hero-catch">
+                    <p> gotta catch em all </p>
+                    </div>
                 </section>
             </div>          
             <div class="landingpage-container">
@@ -40,11 +46,14 @@
                     <h4>Populära produkter</h4>
                     <?php 
                     include "db.php";
-                        foreach ($popularProducts as $products): ?>
+                        foreach ($popularProducts as $product): ?>
                         <div class="popular-product">
-                            <h3><?php echo htmlspecialchars($products['name']); ?></h3>
-                            <p><?php echo htmlspecialchars($products['description']); ?></p>
-                            <p>Pris: <?php echo htmlspecialchars($products['price']); ?> kr</p>
+                            <a href="productDetails.php?id=<?php echo $product['id']; ?>">
+                            
+                                <h3><?php echo htmlspecialchars($product['name']); ?></h3>
+                            
+                            <p><?php echo htmlspecialchars($product['description']); ?></p>
+                            <p>Pris: <?php echo htmlspecialchars($product['price']); ?> kr</p></a>
                         </div>
                     <?php endforeach; ?>
                 </div>

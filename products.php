@@ -66,11 +66,14 @@
             
             foreach ($products as $product) {
                 echo "<div class='product'>";
+                echo "<a href='productDetails.php?id=" . $product['id'] . "'>";
                 echo "<img src='public/{$product['image_url']}' alt='{$product['name']}'>";
                 echo "<h2>{$product['name']}</h2>";
                 echo "<p>{$product['description']}</p>";
                 echo "<p>{$product['price']} kr</p>";
                 echo "</div>";
+
+                
             }
             ?>
         </div>

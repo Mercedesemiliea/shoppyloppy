@@ -42,7 +42,7 @@
             $whereConditions = [];
             $params = [];
 
-            $productsPerPage = 8; 
+            $productsPerPage = 12; 
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $offset = ($currentPage - 1) * $productsPerPage;
             

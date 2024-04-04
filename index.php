@@ -3,7 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Evolve Emporium</title>
+        <link rel="icon" type="public/x-icon" href="\public\apple-touch-icon-57x57.png">
+
         <link rel="stylesheet" href="style.css">
+        <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 
 </head>
 

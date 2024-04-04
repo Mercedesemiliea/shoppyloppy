@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>E-handel</title>
+    <title>Evolve Emporium</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,10 +41,15 @@
             <?php
             $whereConditions = [];
             $params = [];
+
+            $productsPerPage = 8; 
+            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $offset = ($currentPage - 1) * $productsPerPage;
             
             if ($category_id) {
                 $whereConditions[] = "products.category_id = ?";
                 $params[] = $category_id;
+
             }
 
             
@@ -56,10 +61,23 @@
 
             $whereSQL = !empty($whereConditions) ? " WHERE " . implode(" AND ", $whereConditions) : "";
             
+            $limitSQL = " LIMIT $productsPerPage OFFSET $offset";
+
+            $countSQL = "SELECT COUNT(*) FROM products" . $whereSQL;
+            $stmt = $pdo->prepare($countSQL);
+            $stmt->execute($params);
+            $totalRows = $stmt->fetchColumn();
+            $totalPages = ceil($totalRows / $productsPerPage);
+
+            
+           
+       
+
+
             $query = "SELECT products.* FROM products 
-                      LEFT JOIN categories ON products.category_id = categories.id"
+                      LEFT JOIN categories ON products.category_id = categories.id" 
                       . $whereSQL 
-                      . " ORDER BY products.price $dir";
+                      . " ORDER BY products.price $dir" . $limitSQL;
             $stmt = $pdo->prepare($query);
             $stmt->execute($params);
             $products = $stmt->fetchAll();
@@ -72,10 +90,26 @@
                 echo "<p>{$product['description']}</p>";
                 echo "<p>{$product['price']} kr</p>";
                 echo "</div>";
+                echo "</a>";
 
                 
             }
             ?>
+         <div class="pagination-container">
+            <?php
+            for ($i = 1; $i <= $totalPages; $i++) {
+                
+                echo "<div class='pagination'>";
+                echo "<a href='products.php?page=$i";
+                echo $category_id ? "&category_id=$category_id" : "";
+                echo $search ? "&search=$search" : "";
+                echo "&dir=$dir'>$i</a> ";
+                echo '</div>';
+                
+            }
+           
+            ?>
+            </div>
         </div>
     </div>
     <?php include "footer.php"; ?>

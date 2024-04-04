@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Evolve Emporium</title>
         <link rel="stylesheet" href="style.css">
-        <iconify-icon icon="simple-icons:pokemon" width="3rem" height="3rem"></iconify-icon>
+
 </head>
 
     </head>

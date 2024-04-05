@@ -8,23 +8,29 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_to_cart'])) {
-   
-    $productId = $_POST['product_id'];
-    $quantity = $_POST['quantity'];
 
-   
-}
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_to_cart'])) {
-    $productId = $_POST['product_id'];
-    $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
+    if (isset($_POST['product_id'])) {
+        $productId = $_POST['product_id'];
     
    
-    if (array_key_exists($productId, $_SESSION['cart'])) {
-        $_SESSION['cart'][$productId] += $quantity; 
-    } else {
-        $_SESSION['cart'][$productId] = $quantity; 
+        if (isset($_POST['update_cart'])) {
+            if (isset($_POST['decrease']) && $_SESSION['cart'][$productId] > 0) {
+                $_SESSION['cart'][$productId]--;
+            } elseif (isset($_POST['increase'])) {
+                $_SESSION['cart'][$productId]++;
+            }
+        } elseif (isset($_POST['add_to_cart'])) {
+          
+            $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+
+            if (array_key_exists($productId, $_SESSION['cart'])) {
+                $_SESSION['cart'][$productId] += $quantity;
+            } else {
+                $_SESSION['cart'][$productId] = $quantity;
+            }
+        }
     }
 
     header('Location: cart.php');
@@ -68,19 +74,18 @@ foreach ($_SESSION['cart'] as $productId => $quantity) {
     <?php if (empty($cartItems)): ?>
         <p>Din varukorg är tom.</p>
     <?php else: ?>
-        <div class="cart-items">
-            <?php foreach ($cartItems as $item): ?>
-                <div class="cart-item">
-                    <h3><?= htmlspecialchars($item['name']) ?></h3>
-                    <p><?= htmlspecialchars($item['description']) ?></p>
-                    <form action="update_cart.php" method="post">
-        <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
-        <p>
-             
+
+        <?php foreach ($cartItems as $item): ?>
+    <div class="cart-item">
+        <h3><?= htmlspecialchars($item['name']) ?></h3>
+        <p><?= htmlspecialchars($item['description']) ?></p>
+        <form action="cart.php" method="post">
+            <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
+            <input type="hidden" name="update_cart" value="true">
             <button type="submit" name="decrease" value="true">-</button>
             <?= htmlspecialchars($item['quantity']) ?>
             <button type="submit" name="increase" value="true">+</button>
-        </p>
+        </form>
                     <p>Antal: <?= htmlspecialchars($item['quantity']) ?></p>
                     <p>Pris: <?= htmlspecialchars($item['price']) ?> kr</p>
                 </div>

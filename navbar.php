@@ -17,7 +17,7 @@
         
         <div class="nav-search">
             <form action="products.php" method="get">
-                <input type="text" name="search" placeholder="Sök pokemon..">
+                <input type="text" name="search" placeholder="Sök Pokémon..">
                 <button type="submit">Sök</button>  
 
             </form>

@@ -25,9 +25,9 @@
                 echo "<p>Pris: " . htmlspecialchars($product['price']) . " kr</p>";
 
                 echo "<form action='cart.php' method='post'>";
-                echo "<input type='hidden' name='productId' value='{$product['id']}'>";
-                echo "<input type='hidden' name='quantity' value='1'>"; 
-                echo "<button type='submit'>Lägg till i kundvagnen</button>";
+                echo "<input type='hidden' name='product_id' value='{$product['id']}'>";
+                echo "<input type='number' name='quantity' value='1' min='1'>"; 
+                echo "<button type='submit' name='add_to_cart'>Lägg till i kundvagnen</button>";
                 echo "</form>";
                 echo "</div>";
             } else {

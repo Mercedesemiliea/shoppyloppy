@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <title>Evolve Emporium</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<?php include 'header.php'; ?>
 <body>
     <?php include "navbar.php"; ?>
     <div class="products-background">
@@ -54,9 +50,9 @@
 
             
             if ($search) {
-                $whereConditions[] = "(products.name LIKE ? OR categories.name LIKE ?)";
+                $whereConditions[] = "(products.name LIKE ? )";
                 $params[] = '%' . $search . '%';
-                $params[] = '%' . $search . '%';
+                
             }
 
             $whereSQL = !empty($whereConditions) ? " WHERE " . implode(" AND ", $whereConditions) : "";

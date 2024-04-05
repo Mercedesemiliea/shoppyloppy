@@ -3,6 +3,9 @@
 
 </head>
 <footer>
-    <p> &copy; <?php echo date("Y"); ?> Evolve Emporium</p> <span class="iconify icon-pokemon" data-icon="simple-icons:pokemon" data-inline="false"></span>
+    <p> &copy; <?php echo date("Y"); ?> Evolve Emporium</p> 
+    <div class="pokemon-icon">
+    <span class="iconify" data-icon="simple-icons:pokemon" data-inline="false"></span>
+    </div>
 
 </footer>

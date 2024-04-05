@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <head>
-        <meta charset="UTF-8">
-        <title>Evolve Emporium</title>
-        <link rel="icon" type="public/x-icon" href="\public\apple-touch-icon-57x57.png">
 
-        <link rel="stylesheet" href="style.css">
-        <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
-
-</head>
-
+<?php include 'header.php'; ?>
     </head>
     <body>
         <?php include "navbar.php"; ?>
             <div class="landingpage-background-container">
                 <section class="hero">
+                    <div class="login">
+                <ul>
+            <li><a href="login.php">Logga in</a></li>
+            <li><a href="register.php">Registrera</a></li>
+        </ul>
+        </div>
                     <h1>Välkommen till Evolve Emporium</h1>
                     <div class="hero-catch">
                     <p> gotta catch em all </p>
@@ -25,9 +23,8 @@
                 <div class="landingpage-background-content">
                     <p> Din ultimata destination 
                         för allt som hjärta kan begära från den spännande världen 
-                        av Pokémon. I vårt omsorgsfullt kuraterade sortiment hittar 
-                        du allt från de senaste och mest eftertraktade samlarfigurerna 
-                        till exklusivt Pokémon-merchandise som inte finns någon 
+                        av Pokémon. I vårt omsorgsfullt sortiment hittar 
+                        du allt från de senaste och mest eftertraktade Pokémons som inte finns någon 
                         annanstans. Oavsett om du är en erfaren Pokémon-tränare på 
                         jakt efter nästa legendariska tillägg till din samling, eller 
                         en nybörjare som just påbörjat ditt äventyr, har vi något för dig.

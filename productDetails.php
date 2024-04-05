@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <title>Pokémon Detaljer</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<?php include 'header.php'; ?>
 <body>
     <?php include "navbar.php"; ?>
     <div class="product-detail-backgorund">

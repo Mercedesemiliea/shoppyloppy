@@ -1,0 +1,98 @@
+.order-confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 230vh;
+    background-color: #f9f9f9;
+
+}
+
+.order-confirmation {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    padding-bottom: 3%;
+}
+
+.order-confirmation h2,
+.order-confirmation h3 {
+    color: #444;
+}
+
+.order-details,
+.customer-details,
+.next-steps {
+    margin-top: 20px;
+}
+
+.order-details {
+    background-color: #e7e3e3;
+    padding: 2%;
+    border-radius: 1%;
+}
+
+.order-details h4 {
+    color: #444;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-details li {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.order-details li:last-child {
+    border-bottom: none;
+}
+
+.customer-details p,
+.next-steps p,
+.order-details p {
+    margin: 10px 0;
+}
+
+.continue-shopping-btn {
+    background-color: #000000;
+    color: white;
+    padding: 20px 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    border: 1px solid #ffffff;
+
+    width: 100%;
+
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.continue-shopping-btn:hover {
+    background-color: hotpink;
+    color: #000000;
+}
+
+.customer-action {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.order-confirmation-image {
+    background-image: url("../public/pokemonlogga.png");
+    background-position: center;
+    background-size: cover;
+    width: 80%;
+    height: 450px;
+    position: absolute;
+    left: 8%;
+    top: 140%;
+    filter: grayscale(100%);
+}

@@ -21,8 +21,18 @@
     position: absolute;
     top: 15%;
     left: 5%;
-    color: #ffffff;
 
+
+}
+
+.register-container input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #000000;
 }
 
 .register-container h1 {

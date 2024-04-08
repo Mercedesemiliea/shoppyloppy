@@ -7,6 +7,15 @@
     background-color: #e1e1e1;
 }
 
+.emty-cart {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #e1e1e1;
+}
+
 .cart-container {
     display: flex;
     flex-direction: column;
@@ -39,11 +48,36 @@
     flex-direction: column;
     gap: 10px;
 
+
+
+}
+
+.scroll-container {
+    border-radius: 5px;
+    overflow-y: auto;
+    height: 80vh;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .cart-container h2 {
     margin: 0;
-    color: #333;
     text-transform: uppercase;
 }
 
@@ -69,7 +103,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     left: 65%;
-    top: 15%;
+    top: 20%;
+    color: #0e0e0e;
 
 }
 
@@ -113,10 +148,19 @@
     width: 100%;
 
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
-.payment {
-    width: 40%;
-    color: #000000;
+
+
+.pokemon-slogan-image {
+    background-image: url("../public/pokemonlogga.png");
+    background-size: cover;
+    background-position: center;
+    width: 80%;
+    height: 450px;
+    position: absolute;
+    left: 8%;
+    top: 120%;
+    filter: grayscale(100%);
 }

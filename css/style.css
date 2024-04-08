@@ -305,6 +305,12 @@ h3 {
     background: #b2c0cf;
 }
 
+.navbar p {
+    color: white;
+    position: absolute;
+    left: 10%;
+    font-size: 1rem;
+}
 
 footer {
     background-color: #000000;
@@ -321,6 +327,13 @@ footer {
 
 }
 
+.back-button {
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin: 0 10px;
+
+}
 
 .product-detail-backgorund {
     display: flex;
@@ -329,8 +342,8 @@ footer {
     flex-direction: column;
     height: 230vh;
     width: 100%;
-    background-color: rgb(4, 4, 4);
-    color: white;
+    background-color: rgb(0, 0, 0);
+
 }
 
 .product-detail-container {
@@ -338,13 +351,13 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 80vh;
+    height: 85vh;
     width: 70%;
-    color: white;
+    color: rgb(255, 255, 255);
     position: absolute;
     top: 15%;
     right: 15%;
-    background-color: rgb(12, 12, 12);
+    background-color: rgb(9, 9, 9);
     text-align: center;
 }
 
@@ -353,7 +366,7 @@ footer {
 }
 
 .product-details-image {
-    background-image: url('public/wallhaven-lnzpj4.png');
+    background-image: url('../public/wallhaven-lnzpj4.png');
     background-position: center;
     background-size: cover;
     width: 100%;

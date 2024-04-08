@@ -6,8 +6,9 @@
         <div class="login-container">
             <h1>Logga in</h1>
             <form action="login.php" method="post">
-                <label for="email">E-post:</label>
-                <input type="email" name="email" id="email" required>
+            <label for="username">Användarnamn:</label>
+<input type="text" name="username" id="username" required>
+            
                 <label for="password">Lösenord:</label>
                 <input type="password" name="password" id="password" required>
                 <button type="submit">Logga in</button>

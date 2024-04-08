@@ -27,3 +27,4 @@ try {
     echo "Kunde inte hämta kategorier: " . $e->getMessage();
     exit;
 }
+

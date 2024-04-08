@@ -38,6 +38,7 @@
         }
         ?>
     </div>
+    <div class="product-details-image"></div>
 </div>
     <?php include "footer.php"; ?>
 </body>

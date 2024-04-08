@@ -17,7 +17,7 @@ html {
 .landingpage-background-container {
     font-family: Arial, sans-serif;
     height: 100vh;
-    background-image: url('wallhaven-l8z7rq.jpg');
+    background-image: url('/public/wallhaven-l8z7rq.jpg');
     background-size: cover;
     background-position: center 45px;
     background-repeat: no-repeat;
@@ -168,6 +168,7 @@ h3 {
     flex-direction: column;
     height: 180vh;
     width: 100%;
+    background-color: #ffffff;
 
 
 }
@@ -326,9 +327,9 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    height: 230vh;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(4, 4, 4);
     color: white;
 }
 
@@ -345,6 +346,38 @@ footer {
     right: 15%;
     background-color: rgb(12, 12, 12);
     text-align: center;
+}
+
+.product-detail-container p {
+    width: 50%;
+}
+
+.product-details-image {
+    background-image: url('public/wallhaven-lnzpj4.png');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    top: 110%;
+}
+
+.product-detail-container button {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    border: 1px solid #ffffff;
+
+}
+
+.product-detail-container input {
+    padding: 10px;
+    margin: 10px;
+    width: 50%;
+    border: 1px solid #ffffff;
 }
 
 .product-detail-container h2 {

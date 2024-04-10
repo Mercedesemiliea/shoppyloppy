@@ -1,13 +1,19 @@
 <?php
 session_start();
 include 'db.php';
+include 'header.php'; 
+include '../shoppyloppy/componens/getCartItem.php';
 
+
+$cart = getCartItems($pdo);
+$totalQuantity = $cart['totalQuantity'];
+$totalPrice = $cart['totalPrice'];
+$cartItems = $cart['cartItems'];
 
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
-
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,21 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-$totalQuantity = 0;
-$totalPrice = 0;
-$cartItems = array();
-foreach ($_SESSION['cart'] as $productId => $quantity) {
-    $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
-    $stmt->execute([$productId]);
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($product) {
-        $totalQuantity += $quantity;
-        $totalPrice += $product['price'] * $quantity;
-        $product['quantity'] = $quantity;
-        $cartItems[] = $product;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +59,6 @@ foreach ($_SESSION['cart'] as $productId => $quantity) {
     <meta charset="UTF-8">
     <title>Din Varukorg</title>
     <link rel="stylesheet" href="style.css">
-    <?php include 'header.php'; ?>
 </head>
 
 <body>
@@ -153,6 +144,9 @@ foreach ($_SESSION['cart'] as $productId => $quantity) {
                 <label for="phone">Telefon:</label>
                 <input type="tel" id="phone" name="phone" required>
             </div>
+            <input type="hidden" name="total_quantity" value="<?= htmlspecialchars($totalQuantity); ?>">
+            <input type="hidden" name="total_price" value="<?= htmlspecialchars($totalPrice); ?>">
+
             <p>Totalt antal produkter:
                 <?= $totalQuantity ?>
             </p>

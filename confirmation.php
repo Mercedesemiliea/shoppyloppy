@@ -46,7 +46,7 @@ $cartItems = $_SESSION['cart'];
 // Loopa igenom varje produkt i varukorgen och lägg till den i order_details-tabellen
 
 
-   
+foreach ($_SESSION['cart'] as $productId => $quantity) {
     $stmt = $pdo->prepare("SELECT price FROM products WHERE id = ?");
     $stmt->execute([$productId]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,7 +55,7 @@ $cartItems = $_SESSION['cart'];
     $stmt = $pdo->prepare("INSERT INTO orderdetails (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
     $stmt->execute([$order_id, $productId, $quantity, $productPrice]);
 
-
+}
 
 
 

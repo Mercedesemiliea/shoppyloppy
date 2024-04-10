@@ -1,6 +1,6 @@
 <?php
+session_start();
 
-include 'header.php';
 include 'db.php';
 
 
@@ -49,16 +49,23 @@ $order_id = $pdo->lastInsertId(); // Hämta ID för den nyss skapade ordern
 $cartItems = $_SESSION['cart'];
 
 // Loopa igenom varje produkt i varukorgen och lägg till den i order_details-tabellen
-foreach ($cartItems as $item) {
-    $stmt = $pdo->prepare("INSERT INTO orderdetails (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$order_id, $item['product_id'], $item['quantity'], $item['price']]);
-}
 
-// Rensa varukorgen efter att ordern är genomförd
-$_SESSION['cart'] = [];
+    
+$stmt = $pdo->prepare("INSERT INTO orderdetails (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
+foreach ($cartItems as $productId => $quantity) {
+    $stmt->execute([$order_id, $productId, $quantity, $product['price']]);
+}
+  
+
+
+
+
 
 // Omdirigera till en bekräftelse-sida eller visa ett meddelande
 echo "Din order har lagts till i databasen.";
+
+// Rensa varukorgen efter att ordern är genomförd
+$_SESSION['cart'] = [];
 ?>
 
 
@@ -87,14 +94,7 @@ echo "Din order har lagts till i databasen.";
                 </p>
 
                 <h4>Produkter:</h4>
-                <ul>
-                    <?php
-                    include "db.php";
-                    foreach ($cartItems as $item) {
-                        echo "<li>" . htmlspecialchars($item['name']) . " - Antal: " . htmlspecialchars($item['quantity']) . " - Pris: " . htmlspecialchars($item['price']) . " kr/st</li>";
-                    }
-                    ?>
-                </ul>
+
                 <p>Totalt antal produkter:
                     <?= htmlspecialchars($totalQuantity); ?>
                 </p>

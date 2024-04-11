@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="sv">
 <?php include 'header.php'; ?>
@@ -41,5 +45,4 @@
     </div>
     <?php include "footer.php"; ?>
 </body>
-
 </html>

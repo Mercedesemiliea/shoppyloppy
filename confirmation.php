@@ -3,6 +3,12 @@ session_start();
 
 include 'db.php';
 
+if(isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    
+} else {
+    $user_id = null; 
+}
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -13,7 +19,7 @@ $totalPrice = 0;
 $cartItems = [];
 
 
-
+// Beräknar pris och kvantitet för varje produkt i varukorgen
 if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $productId => $quantity) {
         $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
@@ -30,9 +36,10 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
 }
 
 
-$user_id = $_SESSION['user_id'] ?? null;
+//$user_id = $_SESSION['user_id'] ?? null;
 $order_date = date('Y-m-d H:i:s'); // Nuvarande datum och tid
 $status = 'pending'; // Startstatus för ordern
+
 
 
 // Skapa en ny order

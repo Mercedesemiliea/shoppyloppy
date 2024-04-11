@@ -13,17 +13,19 @@
 .register-container {
     flex-direction: column;
     display: flex;
-    height: 60vh;
+    height: 100vh;
     padding: 5%;
     width: 50%;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 15%;
+    top: -2%;
     left: 5%;
 
 
 }
+
+
 
 .register-container input[type="text"] {
     width: 100%;

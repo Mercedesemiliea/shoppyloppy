@@ -1,0 +1,89 @@
+.register-thanks-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 230vh;
+    background-color: #000000;
+
+}
+
+
+.success-message {
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 50%;
+    background-color: rgba(134, 158, 149, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    z-index: 1100;
+
+}
+
+.success-message p {
+    width: 70%;
+
+}
+
+.success-message a {
+    color: hotpink;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.success-message h1 {
+    color: #000000;
+    font-size: 3rem;
+    text-transform: uppercase;
+    position: absolute;
+    top: 10%;
+}
+
+.user-register-pokemon-image-dragonite {
+    background-image: url('/public/dragonite.png');
+    background-position: center;
+    background-size: cover;
+    width: 45%;
+    height: 640px;
+    position: absolute;
+    right: 1%;
+    top: 25%;
+    z-index: 1000;
+}
+
+.user-register-pokemon-image-gardevoir {
+    background-image: url('/public/gardevoir.png');
+    background-position: center;
+    background-size: cover 50%;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 500px;
+    position: absolute;
+    left: -15%;
+    top: 5%;
+    transform: rotate(25deg);
+    z-index: 1200;
+
+
+}
+
+.user-register-pokemon-image {
+    background-image: url('/public/wallhaven-ox8zl5.jpg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    top: 85%;
+}

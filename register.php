@@ -4,23 +4,36 @@ session_start();
 include 'db.php'; 
 include '../shoppyloppy/componens/registerUser.php';
 
+
+$registrationSuccess = false; 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
     $confirmPassword = $_POST['confirmPassword'] ?? '';
 
-
     $registerSuccess = registerUser($pdo, $username, $email, $password, $confirmPassword);
 
     if ($registerSuccess) {
         $_SESSION['username'] = $username;
-        header('Location: register.php');
-            exit();
+        $_SESSION['registrationSuccess'] = true; 
+        header('Location: userRegisterThanks.php');
+        exit();
     } else {
-        echo "Registrering misslyckades.";
+        $registrationSuccess = false;
+        echo 'Registrering misslyckades.';
     }
-}   
+}
+
+if (isset($_SESSION['registrationSuccess'])) {
+    $registrationSuccess = $_SESSION['registrationSuccess'];
+    unset($_SESSION['registrationSuccess']);
+}
+
+
+
+    
 ?>
 
 
@@ -32,6 +45,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="register-background">
         <div class="pokemon-image-background"></div>
         <div class="register-container">
+
+            <?php if ($registrationSuccess) : ?>
+                <div class="success-message">
+                    <p>Registreringen lyckades!</p>
+                    <a href="login.php">Logga in här</a></p>
+                </div>
+            <?php else: ?>
+
             <h1>Registrera</h1>
 
             <form action="register.php" method="post">
@@ -51,9 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
 
             <p>Har du redan ett konto? <a href="login.php">Logga in här</a></p>
-
+        <?php endif; ?>
         </div>
         <div class="pokemon-image-dragonite"></div>
     </div>
     <?php include "footer.php"; ?>
 </body>
+

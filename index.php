@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -9,8 +13,12 @@
                 <section class="hero">
                     <div class="login">
                 <ul>
+                    <?php if (isset($_SESSION['username'])): ?>
+                    <li><a href="logout.php">Logga ut</a></li>
+                    <?php else: ?>
             <li><a href="login.php">Logga in</a></li>
             <li><a href="register.php">Registrera</a></li>
+            <?php endif; ?>
         </ul>
         </div>
                     <h1>Välkommen till Evolve Emporium</h1>

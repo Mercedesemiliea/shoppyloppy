@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="/css/cart.css">
     <link rel="stylesheet" href="/css/confirmation.css">
+    <link rel="stylesheet" href="/css/registerUserThanks.css">
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

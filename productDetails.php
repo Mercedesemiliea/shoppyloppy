@@ -6,25 +6,18 @@
     <?php include "navbar.php"; ?>
     <div class="product-detail-backgorund">
         <div class="product-detail-container">
-       <div class="back-button">
-        <button onclick="history.back()">Gå tillbaka</button>
-       </div>
-
-
+            <div class="back-button">
+                <button onclick="history.back()">Gå tillbaka</button>
+            </div>
             <?php
             include "db.php";
-
-
             $productId = isset($_GET['id']) ? $_GET['id'] : null;
 
             if ($productId) {
-
                 $stmt = $pdo->prepare("SELECT * FROM products WHERE id = :id");
                 $stmt->execute(['id' => $productId]);
                 $product = $stmt->fetch();
-
                 if ($product) {
-
                     echo "<h2>" . htmlspecialchars($product['name']) . "</h2>";
                     echo "<img src='public/" . htmlspecialchars($product['image_url']) . "' alt='" . htmlspecialchars($product['name']) . "' style='width:300px;'>";
                     echo "<p>" . htmlspecialchars($product['description']) . "</p>";

@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="sv">
 <?php include 'header.php'; ?>
+
 <body>
     <?php include "navbar.php"; ?>
     <div class="products-background">
@@ -18,7 +19,10 @@ session_start();
             $search = isset($_GET['search']) ? $_GET['search'] : null;
             $dir = isset($_GET['dir']) && $_GET['dir'] === 'desc' ? 'desc' : 'asc';
             foreach ($categories as $category): ?>
-                <a href="products.php?category_id=<?php echo $category['id']; ?><?php echo $search ? '&search=' . $search : ''; ?><?php echo '&dir=' . $dir; ?>"><?php echo htmlspecialchars($category['name']); ?></a>
+                <a
+                    href="products.php?category_id=<?php echo $category['id']; ?><?php echo $search ? '&search=' . $search : ''; ?>
+                    <?php echo '&dir=' . $dir; ?>"><?php echo htmlspecialchars($category['name']); ?>
+                </a>
             <?php endforeach; ?>
 
             <!-- Sorteringsform -->
@@ -36,31 +40,29 @@ session_start();
                 <?php endif; ?>
             </form>
         </div>
-        
+
         <div class="products-container">
             <?php
             $whereConditions = [];
             $params = [];
 
-            $productsPerPage = 12; 
-            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $productsPerPage = 12;
+            $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
             $offset = ($currentPage - 1) * $productsPerPage;
-            
+
             if ($category_id) {
                 $whereConditions[] = "products.category_id = ?";
                 $params[] = $category_id;
-
             }
 
-            
+
             if ($search) {
                 $whereConditions[] = "(products.name LIKE ? )";
                 $params[] = '%' . $search . '%';
-                
             }
 
             $whereSQL = !empty($whereConditions) ? " WHERE " . implode(" AND ", $whereConditions) : "";
-            
+
             $limitSQL = " LIMIT $productsPerPage OFFSET $offset";
 
             $countSQL = "SELECT COUNT(*) FROM products" . $whereSQL;
@@ -69,19 +71,14 @@ session_start();
             $totalRows = $stmt->fetchColumn();
             $totalPages = ceil($totalRows / $productsPerPage);
 
-            
-           
-       
-
-
             $query = "SELECT products.* FROM products 
-                      LEFT JOIN categories ON products.category_id = categories.id" 
-                      . $whereSQL 
-                      . " ORDER BY products.price $dir" . $limitSQL;
+                      LEFT JOIN categories ON products.category_id = categories.id"
+                . $whereSQL
+                . " ORDER BY products.price $dir" . $limitSQL;
             $stmt = $pdo->prepare($query);
             $stmt->execute($params);
             $products = $stmt->fetchAll();
-            
+
             foreach ($products as $product) {
                 echo "<div class='product'>";
                 echo "<a href='productDetails.php?id=" . $product['id'] . "'>";
@@ -91,27 +88,25 @@ session_start();
                 echo "<p>{$product['price']} kr</p>";
                 echo "</div>";
                 echo "</a>";
+            }
+            ?>
+            <div class="pagination-container">
+                <?php
+                for ($i = 1; $i <= $totalPages; $i++) {
 
-                
-            }
-            ?>
-         <div class="pagination-container">
-            <?php
-            for ($i = 1; $i <= $totalPages; $i++) {
-                
-                echo "<div class='pagination'>";
-                echo "<a href='products.php?page=$i";
-                echo $category_id ? "&category_id=$category_id" : "";
-                echo $search ? "&search=$search" : "";
-                echo "&dir=$dir'>$i</a> ";
-                echo '</div>';
-                
-            }
-           
-            ?>
+                    echo "<div class='pagination'>";
+                    echo "<a href='products.php?page=$i";
+                    echo $category_id ? "&category_id=$category_id" : "";
+                    echo $search ? "&search=$search" : "";
+                    echo "&dir=$dir'>$i</a> ";
+                    echo '</div>';
+                }
+
+                ?>
             </div>
         </div>
     </div>
     <?php include "footer.php"; ?>
 </body>
+
 </html>

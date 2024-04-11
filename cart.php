@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'db.php';
- 
+
 include '../shoppyloppy/componens/getCartItem.php';
 
 
@@ -58,13 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Din Varukorg</title>
-    <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
     <?php include "navbar.php"; ?>
     <div class="cart-background">
-    <div class="pokemon-slogan-image"></div>
+        <div class="pokemon-slogan-image"></div>
         <div class="cart-container">
             <h2>Din Varukorg</h2>
             <p>Totalt antal produkter:
@@ -76,87 +76,87 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <?php if (empty($cartItems)): ?>
                 <div class="emty-cart">
-                <p>Din varukorg är tom.</p>
+                    <p>Din varukorg är tom.</p>
                 </div>
-                
+
             <?php else: ?>
                 <div class="scroll-container">
-                <?php foreach ($cartItems as $item): ?>
-                    <div class="cart-item">
-                        <h3>
-                            <?= htmlspecialchars($item['name']) ?>
-                        </h3>
-                        <p>
-                            <?= htmlspecialchars($item['description']) ?>
-                        </p>
-                        <form action="cart.php" method="post">
-                            <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
-                            <input type="hidden" name="update_cart" value="true">
-                            <button type="submit" name="decrease" value="true">-</button>
-                            <?= htmlspecialchars($item['quantity']) ?>
-                            <button type="submit" name="increase" value="true">+</button>
-                        </form>
-                        <p>Antal:
-                            <?= htmlspecialchars($item['quantity']) ?>
-                        </p>
-                        <p>Pris:
-                            <?= htmlspecialchars($item['price'] * $item['quantity']) ?> kr
-                        </p>
+                    <?php foreach ($cartItems as $item): ?>
+                        <div class="cart-item">
+                            <h3>
+                                <?= htmlspecialchars($item['name']) ?>
+                            </h3>
+                            <p>
+                                <?= htmlspecialchars($item['description']) ?>
+                            </p>
+                            <form action="cart.php" method="post">
+                                <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
+                                <input type="hidden" name="update_cart" value="true">
+                                <button type="submit" name="decrease" value="true">-</button>
+                                <?= htmlspecialchars($item['quantity']) ?>
+                                <button type="submit" name="increase" value="true">+</button>
+                            </form>
+                            <p>Antal:
+                                <?= htmlspecialchars($item['quantity']) ?>
+                            </p>
+                            <p>Pris:
+                                <?= htmlspecialchars($item['price'] * $item['quantity']) ?> kr
+                            </p>
 
-                    </div>
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>
-            
+
         </div>
         </div>
-        
-        
+
+
         <div class="checkout-container">
-        <h2>Fyll i dina uppgifter</h2>
-        <form action="confirmation.php" method="post">
-            <div class="form-group">
-                <label for="name">Namn:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
+            <h2>Fyll i dina uppgifter</h2>
+            <form action="confirmation.php" method="post">
+                <div class="form-group">
+                    <label for="name">Namn:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-            <div class="form-group">
-                <label for="email">E-post:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+                <div class="form-group">
+                    <label for="email">E-post:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-            <div class="form-group">
-                <label for="address">Adress:</label>
-                <input type="text" id="address" name="address" required>
-            </div>
+                <div class="form-group">
+                    <label for="address">Adress:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
 
-            <div class="form-group">
-                <label for="postcode">Postnummer:</label>
-                <input type="text" id="postcode" name="postcode" required>
-            </div>
+                <div class="form-group">
+                    <label for="postcode">Postnummer:</label>
+                    <input type="text" id="postcode" name="postcode" required>
+                </div>
 
-            <div class="form-group">
-                <label for="city">Stad:</label>
-                <input type="text" id="city" name="city" required>
-            </div>
+                <div class="form-group">
+                    <label for="city">Stad:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
 
-            <div class="form-group">
-                <label for="phone">Telefon:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <input type="hidden" name="total_quantity" value="<?= htmlspecialchars($totalQuantity); ?>">
-            <input type="hidden" name="total_price" value="<?= htmlspecialchars($totalPrice); ?>">
+                <div class="form-group">
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <input type="hidden" name="total_quantity" value="<?= htmlspecialchars($totalQuantity); ?>">
+                <input type="hidden" name="total_price" value="<?= htmlspecialchars($totalPrice); ?>">
 
-            <p>Totalt antal produkter:
-                <?= $totalQuantity ?>
-            </p>
-            <p>Totalpris:
-                <?= $totalPrice ?> kr
-            </p>
-            <button type="submit" class="checkout-button">Betala</button>
-        </form>
+                <p>Totalt antal produkter:
+                    <?= $totalQuantity ?>
+                </p>
+                <p>Totalpris:
+                    <?= $totalPrice ?> kr
+                </p>
+                <button type="submit" class="checkout-button">Betala</button>
+            </form>
         <?php endif; ?>
-                    
+
 
 
     </div>

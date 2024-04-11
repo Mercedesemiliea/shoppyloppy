@@ -274,8 +274,8 @@ h3 {
 }
 
 .navbar li a:hover {
-    background-color: #FCF6EA;
-    color: black;
+    text-decoration: underline;
+
 }
 
 .cart-icon {

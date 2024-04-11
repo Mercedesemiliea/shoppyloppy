@@ -1,7 +1,12 @@
 <?php 
 
 include 'header.php'; 
-$cartItemCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+$cartItemCount = 0;
+if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    foreach($_SESSION['cart'] as $productId => $quantity) {
+        $cartItemCount += $quantity;
+    }
+}
 ?>
     <nav class="navbar">
         <span class="iconify" data-icon="arcticons:pokemon-home"></span>

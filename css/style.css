@@ -211,6 +211,7 @@ h3 {
 .product-container p {
     color: white;
     text-decoration: none;
+
 }
 
 .product a {
@@ -219,6 +220,7 @@ h3 {
 }
 
 .category-links {
+
     margin-bottom: 20px;
     text-align: center;
 }
